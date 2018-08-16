@@ -9,11 +9,9 @@
 
   tasks:
   - name: Ensure that Apache is installed
-    yum: name=httpd state=present
-    when: ansible_os_family == "RedHat"
+    apt: name=apache2 state=present
+    when: ansible_os_family == "Ubuntu"
 
   - name: Start Apache Services
-    service: name=httpd enabled=yes state=started
+    service: name=apache2 enabled=yes state=started
     
-  - name: Copy Site Files
-    template: src=templates/index.j2 dest={{ doc_root }}/index.html mode=0664
