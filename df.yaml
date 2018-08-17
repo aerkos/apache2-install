@@ -1,3 +1,4 @@
+- hosts: srv
 - name: Ansible shell module creates parameter example.
   command: touch shell.txt
   args:
