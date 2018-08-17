@@ -1,7 +1,7 @@
 - hosts: srv
   tasks:
   - name: Ansible shell module output
-    shell: echo $PWD
+    command: df -kh
     register: command_result
 
   - name: Ansible shell register result
