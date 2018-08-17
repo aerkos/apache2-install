@@ -1,10 +1,11 @@
 - hosts: srv
   tasks:
-  - name: Ansible shell module multiple commands
-    shell: "cat {{ item }} | grep ansible"
-    with_items:
-      - hello.txt
-      - hello2.txt
-      - hello3.txt
-    args:
-      chdir: /root/ansible
+  - name: Ansible shell module output
+    shell: echo $PWD
+    register: command_result
+
+  - name: Ansible shell register result
+    debug: msg="{{ command_result }}"
+
+  - name: Return only the shell standard output
+    debug: msg="{{ command_result.stdout }}"
