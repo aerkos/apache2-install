@@ -1,6 +1,10 @@
 - hosts: srv
-- name: Ansible shell module creates parameter example.
-  command: touch shell.txt
-  args:
-    chdir: /root/ansible
-    creates: shell.txt
+  tasks:
+  - name: Ansible shell module multiple commands
+    shell: "cat {{ item }} | grep ansible"
+    with_items:
+      - hello.txt
+      - hello2.txt
+      - hello3.txt
+    args:
+      chdir: /root/ansible
