@@ -1,5 +1,5 @@
 - name: Ansible command module creates parameter example.
-  command: df -kh > shell.txt
+  command: 'df -kh' > shell.txt
   args:
     chdir: /root/ansible
     creates: shell.txt
