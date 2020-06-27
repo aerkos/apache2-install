@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: root
+  become: yes
+  tasks:
+    - name: Install packages
+      apt: name= state=present
+      with_items:
+          - vim
+          - curl
+          - wget
+          - curl
+          - git
