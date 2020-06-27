@@ -2,12 +2,10 @@
 - hosts: all
   remote_user: root
   become: yes
-  tasks:
-    - name: Install packages
-      apt: name= state=present
-      with_items:
-          - vim
-          - curl
-          - wget
-          - curl
-          - git
+  tasks:       
+    - name: Insert/Update DNS
+        path: /etc/dnsmasq.d/dnsmasq.static.conf
+        block: |
+          iface eth0 inet static
+              address 192.0.2.23
+              netmask 255.255.255.0
